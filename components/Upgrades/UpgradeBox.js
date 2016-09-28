@@ -1,30 +1,23 @@
+// Import React and MobX observer
 import React from 'react';
+import { observer } from 'mobx-react';
+import Item from './UpgradeItem.js'
 
+@observer
 export default class Upgrades extends React.Component {
   render() {
-    let perks = ['One', 'Two', 'Three', 'Four', 'Five'];
+    const { perks } = this.props.store;
     return (
       <div id="upgrades">
-        <ul>
-          {perks.map((name, i) => {
-              return <Item key={i} name={name} />
-            })}
-        </ul>
+      <h3>Upgrades</h3>
+        <table>
+          <tbody>
+            {perks.collection.map((perk, i) => {
+                return <Item store={store} key={i} id={perk.id} name={perk.name} level={perk.level} type={perk.type} cost={perk.cost} />
+              })}
+          </tbody>
+        </table>
       </div>
     );
-  }
-}
-
-class Item extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  buyUpgrade() {
-    console.log(this.props.name);
-  }
-
-  render() {
-    return <li key={this.props.index} onClick={this.buyUpgrade.bind(this)}>{this.props.name}</li>
   }
 }

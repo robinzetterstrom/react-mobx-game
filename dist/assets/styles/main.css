@@ -1,5 +1,7 @@
+@import 'https://fonts.googleapis.com/css?family=Chewy';
+
 body {
-  font-family: 'Helvetica', monospace;
+  font-family: 'Chewy', cursive;
   padding: 0;
   margin: 0;
   color: #fff;
@@ -9,28 +11,85 @@ body {
   -khtml-user-select: none;    /* Konqueror */
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently
-                                  not supported by any browser */
+  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
   overflow: hidden;
 }
 main {
-  width: 90%;
-  margin: 15% auto;
+  width: 80%;
+  margin: 10% auto;
 }
 
 #upgrades {
-  width: 25%;
-  background-color: #ffd993;
   float: left;
+  width: 25em;
+  height: 35em;
+  background-color: #55362c;
   color: black;
+  padding: 10px;
+  border-radius: .5em;
+  border-bottom: 6px solid #311b13;
 }
 
-ul {
-  list-style: none;
+
+#upgrades h3 {
+  position: relative;
+  top: -.7em;
+  left: -.6em;
+  color: #fff;
+  background-color: #734638;
+  border-bottom: 6px solid #462d29;
+  width: 10.5em;
+  text-align: center;
+  font-size: 2.5em;
+  padding: .3em;
+  transform: rotateZ(-2deg);
+  border-radius: .1em;
+  margin: 0;
+  padding: .3em;
 }
 
-li {
-  height: 50px;
+table {
+  padding: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+tr {
+  height: 5em;
+  text-align: left;
+}
+
+td:last-child {
+  text-align: right;
+}
+
+td button {
+  font-family: 'Chewy', cursive;
+  cursor: copy;
+  width: 7em;
+  padding: .8em 1em;
+  border: none;
+  color: #fff;
+  background-color: #56c8ff;
+  border-radius: .4em;
+  font-size: 1.1em;
+  outline: none;
+}
+
+td button:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+button .level {
+  position: relative;
+  top: -25px;
+  left: 80px;
+  background-color: #297896;
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 1em;
 }
 
 #player {
@@ -42,4 +101,13 @@ li {
 #player img {
   height: 15em;
   width: auto;
+  padding: 4em;
+}
+
+#points {
+  color: #fff;
+  width: 85%;
+  text-align: center;
+  font-size: 2.5em;
+  padding: .3em;
 }
