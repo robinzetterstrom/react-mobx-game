@@ -4,8 +4,8 @@ import { observer } from 'mobx-react';
 @observer
 export default class Player extends React.Component {
 
-  _increment(e) {
-    this.props.store.player.points = this.props.store.player.points + this.props.store.player.cps.click
+  _increment() {
+    this.props.store.player.points = this.props.store.player.points + this.props.store.player.event.click
   }
 
   render() {

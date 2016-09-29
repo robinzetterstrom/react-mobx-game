@@ -5,14 +5,36 @@ import { observer } from 'mobx-react';
 export default class Item extends React.Component {
 
   _buyUpgrade() {
-    let {player, perks} = this.props.store;
+    let perk = this.props.store.perks.collection[this.props.id];
+    let player = this.props.store.player;
 
     if (this.props.store.player.points >= this.props.cost) {
+      // Algorithm to increase price of the perk we just upgraded
+      let newPrice = Math.floor((this.props.cost * 1.17) + this.props.cost);
       // Decrase player.points when we buy perks
-      this.props.store.player.points = this.props.store.player.points - this.props.cost;
+      player.points = player.points - this.props.cost;
       //Increase perk level
-      this.props.store.perks.collection[this.props.id].level++;
+      perk.level++;
+      // Set new price to perk after the upgrade
+      perk.cost = newPrice;
+      // Increase click actions based on perk type
+      if (this.props.type == 0) {
+        player.event.click++
+      } else if (this.props.type == 1) {
+        player.event.idle++
+      }
+      // If we have bought any idle perks, lets increment our points every second
+        if (this.props.store.player.event.idle > 0) {
+          this.interval = setInterval(() => {
+            player.points = player.points + player.event.idle
+          }, 1000);
+        }
     }
+  }
+
+  componentWillUnmount() {
+    // If we're in some case where about to unmounts the component, clear the this.interval
+    clearInterval(this.interval);
   }
 
   render() {
@@ -24,7 +46,6 @@ export default class Item extends React.Component {
     return (
       <tr>
         <td>{this.props.name}</td>
-        <td>{this.props.type}</td>
 
         <td><button disabled={canPurchase} onClick={this._buyUpgrade.bind(this)}>
         {checkLevel}

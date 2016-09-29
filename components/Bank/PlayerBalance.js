@@ -8,7 +8,7 @@ export default class Bank extends React.Component {
 
     return (
       <div id="points">
-        <i className="fa fa-money"></i> {player.points}
+       {player.points}$
       </div>
     );
   }
