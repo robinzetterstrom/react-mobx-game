@@ -21,7 +21,7 @@ export default class Item extends React.Component {
       if (this.props.type == 0) {
         player.event.click++
       } else if (this.props.type == 1) {
-        player.event.idle++
+        player.event.idle++;
       }
       // If we have bought any idle perks, lets increment our points every second
         if (this.props.store.player.event.idle > 0) {
